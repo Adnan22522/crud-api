@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>My Contact</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+  <!-- Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand text-uppercase" href="index.html">
+        <strong>Contact</strong> App
+      </a>
+    </div>
+  </nav>
+
+  <!-- content -->
+  <main class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-title">
+              <div class="d-flex align-items-center">
+                <h2 class="mb-0">All Contacts</h2>
+                <div class="ml-auto">
+                  <a href="#" class="btn btn-success" id="add-contact"><i class="fa fa-plus-circle"></i> Add New</a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Show Contact Modal -->
+  <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Contact Modal -->
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Contact</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="editContactForm">
+          <div class="modal-body">
+            <form id="editContctForm">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Name</label>
+                <input type="text" class="form-control" id="editNameInput" aria-describedby="nameHelp">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="editEmailInput" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputAddress" class="form-label">Address</label>
+                <textarea type="text" class="form-control" id="editAddressInput"
+                  aria-describedby="addressHelp"></textarea>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Contact Modal -->
+  <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="addContactForm">
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Name</label>
+                <input type="text" class="form-control" id="addNameInput" aria-describedby="nameHelp">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="addEmailInput" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputAddress" class="form-label">Address</label>
+                <textarea type="text" class="form-control" id="addAddressInput"
+                  aria-describedby="addressHelp"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="addPasswordInput">
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+
+<script>
+  const url = 'http://localhost:3000/api/users';
+  // Fetch all users and display in the table
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      const tbody = document.querySelector('#tbody');
+      tbody.innerHTML = '';
+      data.forEach((user, index) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${user.name}</td>
+          <td>${user.email}</td>
+          <td width="150">
+            <a href="#" class="btn btn-sm btn-circle btn-outline-info" onclick="showUser('${user._id}')" title="Show"><i class="fa fa-eye"></i></a>
+            <a href="#" class="btn btn-sm btn-circle btn-outline-secondary" onclick="editUser('${user._id}')" title="Edit"><i class="fa fa-edit"></i></a>
+            <a href="#" class="btn btn-sm btn-circle btn-outline-danger" title="Delete" onclick="deleteUser('${user._id}')"><i class="fa fa-times"></i></a>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    })
+    .catch(error => console.error('Error:', error));
+
+  //add user
+  document.querySelector('#add-contact').addEventListener('click', function () {
+    const addModal = new bootstrap.Modal(document.getElementById('addModal'));
+    addModal.show();
+  });
+  const addContactForm = document.querySelector('#addContactForm');
+  addContactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.querySelector('#addNameInput').value;
+    const email = document.querySelector('#addEmailInput').value;
+    const address = document.querySelector('#addAddressInput').value;
+    const password = document.querySelector('#addPasswordInput').value;
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name, email, address, password })
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        // Optionally, you can refresh the user list here
+        location.reload();
+      })
+      .catch(error => console.error('Error:', error));
+
+  });
+
+
+  // Show user details in a modal
+  function showUser(id) {
+    fetch(`${url}/${id}`)
+      .then(response => response.json())
+      .then(user => {
+        const modalTitle = document.querySelector('#showModal .modal-title');
+        const modalBody = document.querySelector('#showModal .modal-body');
+        modalTitle.textContent = user.name;
+        modalBody.innerHTML = `
+            <p><strong>Email:</strong> ${user.email}</p>
+            <p><strong>Address:</strong> ${user.address}</p>
+          `;
+        const showModal = new bootstrap.Modal(document.getElementById('showModal'));
+        showModal.show();
+      })
+      .catch(error => console.error('Error:', error));
+  }
+
+  function editUser(id) {
+    // 1. Safely grab the modal (gets the existing one, or creates it if it's the first time)
+    const modalElement = document.getElementById('editModal');
+    const editModal = bootstrap.Modal.getOrCreateInstance(modalElement);
+
+    // 2. Fetch user details and populate the edit form
+    fetch(`${url}/${id}`)
+      .then(response => response.json())
+      .then(user => {
+        document.querySelector('#editNameInput').value = user.name;
+        document.querySelector('#editEmailInput').value = user.email;
+        document.querySelector('#editAddressInput').value = user.address;
+
+        // 3. Show the modal ONLY after the data has been filled in
+        editModal.show();
+      })
+      .catch(error => console.error('Error:', error));
+
+    // 4. Use .onsubmit instead of addEventListener to prevent duplicate API calls!
+    const editContactForm = document.querySelector('#editContactForm');
+
+    editContactForm.onsubmit = function (e) {
+      e.preventDefault();
+
+      const name = document.querySelector('#editNameInput').value;
+      const email = document.querySelector('#editEmailInput').value;
+      const address = document.querySelector('#editAddressInput').value;
+
+      fetch(`${url}/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email, address })
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+
+          // Hide the modal cleanly before reloading
+          editModal.hide();
+          location.reload();
+        })
+        .catch(error => console.error('Error:', error));
+    };
+  }
+
+  // Delete user
+  function deleteUser(id) {
+    if (confirm('Are you sure you want to delete this contact?')) {
+      fetch(`${url}/${id}`, {
+        method: 'DELETE'
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+          // Optionally, you can refresh the user list here
+          location.reload();
+        })
+        .catch(error => console.error('Error:', error));
+    }
+  }
+
+
+</script>
