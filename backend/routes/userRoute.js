@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 import User from '../models/userModel.js';
 
 
@@ -14,6 +15,9 @@ router.get('/users', async (req, res) => {
 
 router.post('/users', async (req, res) => {
   try {
+    const { password } = req.body;
+    const hashPass = await bcrypt.hash(password, 10);
+    req.body.password = hashPass;
     const users = await User.find({'email': req.body.email});
     if(users.length > 0) return res.status(400).json({ message: 'User already exists' });
     const newUser = await User.create(req.body);

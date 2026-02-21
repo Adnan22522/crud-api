@@ -169,6 +169,10 @@
     .then((data) => {
       const tbody = document.querySelector('#tbody');
       tbody.innerHTML = '';
+      if (data.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" class="text-center">No contacts found.</td></tr>';
+        return;
+      }
       data.forEach((user, index) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
